@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <meta property="fb:app_id" content="<%= fb_app_id %>"/>
+  <meta property="fb:app_id" content="<%= ENV['FB_APP_ID'] %>"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta property="og:image" content="https://<%= app_domain %>/og.jpg">
   <%= javascript_include_tag "vendor/modernizr" %>
@@ -21,13 +21,13 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%= fb_app_id %>";
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%= ENV['FB_APP_ID'] %>";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '<%= fb_app_id %>',
+      appId      : '<%= ENV['FB_APP_ID'] %>',
       status     : true,
       xfbml      : true
     });

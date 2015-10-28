@@ -1,10 +1,11 @@
 ## README
 
 * update application_helper
-* update ENV variables
+* update ENV variables: `FB_PAGE`, `FB_APP_ID`, `FB_SECRET`
+
 * update `database.yml`
 * set `config.action_mailer.default_url_options` in `production.rb`
-* add GOOGLE_ANALYTICS env variable
+* add `GOOGLE_ANALYTICS` env variable or edit the `_ga.html.erb`
 
 ![alt tag](http://cdn.meme.am/instances/48077677.jpg)
 
