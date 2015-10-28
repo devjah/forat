@@ -2,7 +2,6 @@
 <html>
 <head>
   <title><%= app_title %></title>
-
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -51,21 +50,13 @@
   </script>
 <%end%>
 
-<div class="clouds">
-
-  <div class="fbtab">
-    <div class="row">
-      <div class="small-12 column">
-        <%= yield %>
-      </div>
+  <div class="row">
+    <div class="small-12 column">
+      <%= yield %>
     </div>
   </div>
 
-</div>
-
   <%= render partial: "layouts/footer" %>
-
-
 
 </body>
 </html>
