@@ -1,0 +1,36 @@
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Admin", admin_path, class: "btn btn-default" %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li><%= link_to destroy_user_session_path, :method => :delete, class: "btn btn-default pull-right" do %><%=t 'sign_out' %><%end%></li>
+    </ul>
+
+  </section>
+</nav>
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="small-12">
+      <% flash.each do |name, message| %>
+        <br>
+        <div data-alert class="alert-box">
+          <%= content_tag :div, message, :id => "flash_#{name}", :class => "notice" %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+
+</div>
+

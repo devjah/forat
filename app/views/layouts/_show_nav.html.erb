@@ -1,0 +1,16 @@
+
+
+<div class="row nav-buttons right">
+	<%= link_to 'Participanți', cards_path, class: 'button radius' %>
+	<br>
+	<a href="https://www.facebook.com/dialog/share?app_id=<%= ENV['FB_APP_ID'] %>&display=popup&href=<%= card_url(@card) %>&redirect_uri=<%= card_url(@card) %>" target="_blank" class="button radius">Distribuie</a>
+	<br>
+	<% if user_signed_in? && current_user.cards[0] %>
+		<%= link_to 'Editează', polish_path(@card), class: 'button radius' %>
+	<%else%>
+		<%= link_to 'Participă', new_card_path, class: 'button radius' %>
+	<%end%>
+
+</div>
+
+

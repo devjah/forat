@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= app_title %></title>
+
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta property="fb:app_id" content="<%= ENV['FB_APP_ID'] %>"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta property="og:image" content="https://<%= app_domain %>/og.jpg">
+  <%= javascript_include_tag "vendor/modernizr" %>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <%= render :partial => 'layouts/ga' if Rails.env == 'production' %>
+
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<%= ENV['FB_APP_ID'] %>',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+    FB.Canvas.setAutoGrow();
+    FB.Canvas.scrollTo(0,0);
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<% if !is_admin? %>
+  <script type="text/javascript">
+    var url = top.location.href
+
+      if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+    } else {
+      if ( url.match(/heroku/) ) {
+          top.location.href = "https://facebook.com/" + "<%= ENV['FB_PAGE'] %>" + "/app_" + "<%= ENV['FB_APP_ID'] %>"
+      }
+    }
+  </script>
+<%end%>
+
+<div class="clouds">
+
+  <div class="fbtab">
+    <div class="row">
+      <div class="small-12 column">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <%= render partial: "layouts/footer" %>
+
+
+
+</body>
+</html>

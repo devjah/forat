@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="small-12 column footer">
+			<p>Această aplicație nu este in niciun fel sponsorizată, sprijinită, administrată sau asociată cu <a href="https://facebook.com" target="_blank">Facebook</a>. Prin înregistrarea în aplicație, informațiile tale vor fi prelucrate de către <%= link_to organizer, "https://facebook.com/#{ ENV['FB_PAGE'] }", target: "_blank" %> și sub nicio forma de către <a href="https://facebook.com" target="_blank">Facebook</a>. Informația oferită de către Dvs. în această aplicație va fi folosită doar ca să asigure o buna funcționare.</p>
+
+
+			<p>
+				<% if user_signed_in? %>
+					Signed in as <b><%= current_user.name %></b> [<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>]
+				<%end%>
+			</p>
+	</div>
+</div>

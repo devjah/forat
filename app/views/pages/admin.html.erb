@@ -1,0 +1,36 @@
+<% if is_admin? %>
+
+<br><br> 
+
+	<table style="width:100%;" class="table">
+		<tr>
+			<th>Nume</th>
+			<th>*</th>
+			<th>*</th>
+			<th>*</th>
+		</tr>
+		<% @cards.each do |c| %>
+			<tr class="<%= c.approved ? 'approved' : 'disapproved'  %>">
+				<td><%= link_to c do %>
+					<%= image_tag c.image.url(:thumb) %> <%= link_to c.user.name, c.user.link %>
+					<%end%>
+				</td>
+				<td>
+					<% if c.approved %>
+					<%= link_to 'disapprove', disapprove_path(c), style: 'opacity: 0.3' %>
+					<%else%>
+					<%= link_to 'approve', approve_path(c) %>
+					<%end%>
+				</td>
+				<td>
+					<%= link_to 'edit', polish_path(c) %>
+				</td>
+				<td>
+					<%= link_to 'originalul', c.image.url %>
+				</td>
+			</tr>
+		<%end%>
+	</table>
+<%else%>
+you are not an admin
+<%end%>
