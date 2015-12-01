@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
 
     # acts_as_voter
 
-    has_many :cards
 
     def self.find_for_facebook_oauth(auth)
   	  where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
