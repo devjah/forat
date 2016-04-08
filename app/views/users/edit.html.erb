@@ -34,26 +34,5 @@
       </div>
     </div>
 
-
-<% if current_user.cards[0] %>
-
-    <div class="img-container" style="width:1px; height:1px;">
-      <%= image_tag current_user.cards.last.image.url(:normal), class: 'cropper' %>
-    </div>
-
-    <script type="text/javascript">
-    $.fn.cropper
-    $(".cropper").cropper({
-      aspectRatio: 16 / 10,
-      preview: ".img-preview",
-             data: <%= current_user.cards.last.crop.gsub!('"', '') %>,
-      done: function(data) {
-        console.log($(".cropper").cropper("getData"));
-      }
-    });
-    </script>
-
-<%end%>
-
   </div>
 </div>

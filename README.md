@@ -11,7 +11,7 @@
 
 ## Use AWS for paperclip uploads like that:
 ```
-app_namespace = 'granat_skeleton_app' # one bucket - multiple apps - split into folders by its namespace
+app_namespace = 'skeleton_app' # one bucket - multiple apps - split into folders by its namespace
 has_attached_file :image, :styles => { normal: "600x600#", small: "341x333#", thumb: "75x75#"},
   :default_url => "/avatar/:style.png",
   :storage => :s3,

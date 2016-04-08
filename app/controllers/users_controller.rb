@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:edit, :update]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def edit
     @user = current_user
@@ -12,13 +12,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        @user.save
-        format.html { redirect_to cards_path, notice: 'OK' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @user.update(user_params)
+      @user.save
+				redirect_to root_url, notice: 'OK'
+    else
+				render action: 'edit'
     end
   end
 
