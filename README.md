@@ -17,8 +17,8 @@ has_attached_file :image, :styles => { normal: "600x600#", small: "341x333#", th
   :storage => :s3,
   :s3_credentials => {
     :bucket => 'granat-contests',
-    :access_key_id => '#{ENV[S3_KEY]}',
-    :secret_access_key => '#{ENV[S3_ACCESS]}'
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_ACCESS']
   },
   :path => app_namespace + if Rails.env.production? then "/:id/:style.:extension" else "/dev/:id/:style.:extension" end
 validates :image, presence: true
